@@ -1,12 +1,20 @@
 import random
 
 # test BubbleSort
-from BubbleSort.BubbleSort import BubbleSort
+# from BubbleSort.BubbleSort import BubbleSort
+# print("-------------BUBBLE SORT-------------")
+# A = list(range(10, 1, -1))
+# random.shuffle(A)
+# print(A)
+# b = BubbleSort()
+# print(b.sort(A))
 
+
+# test InsertionSort
+from InsertionSort.InsertionSort import InsertionSort
+print("-------------INSERTION SORT-------------")
 A = list(range(10, 1, -1))
 random.shuffle(A)
 print(A)
-b = BubbleSort()
-print(b.sort(A))
-
-
+i = InsertionSort()
+print(i.sort(A))
