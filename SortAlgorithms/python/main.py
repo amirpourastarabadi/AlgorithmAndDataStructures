@@ -11,10 +11,20 @@ import random
 
 
 # test InsertionSort
-from InsertionSort.InsertionSort import InsertionSort
-print("-------------INSERTION SORT-------------")
+# from InsertionSort.InsertionSort import InsertionSort
+# print("-------------INSERTION SORT-------------")
+# A = list(range(10, 1, -1))
+# random.shuffle(A)
+# print(A)
+# i = InsertionSort()
+# print(i.sort(A))
+
+
+# test SelectionSort
+from SelectionSort.SelectionSort import SelectionSort
+print("-------------SELECTION SORT-------------")
 A = list(range(10, 1, -1))
 random.shuffle(A)
 print(A)
-i = InsertionSort()
+i = SelectionSort()
 print(i.sort(A))
