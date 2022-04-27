@@ -21,10 +21,20 @@ import random
 
 
 # test SelectionSort
-from SelectionSort.SelectionSort import SelectionSort
-print("-------------SELECTION SORT-------------")
-A = list(range(10, 1, -1))
+# from SelectionSort.SelectionSort import SelectionSort
+# print("-------------SELECTION SORT-------------")
+# A = list(range(10, 1, -1))
+# random.shuffle(A)
+# print(A)
+# i = SelectionSort()
+# print(i.sort(A))
+
+
+# test SelectionSort
+from MergeSort.Recersive.RecursiveMergeSort import RecursiveMergeSort
+print("-------------RECURSIVE MERGE SORT-------------")
+A = list(range(5, 1, -1))
 random.shuffle(A)
 print(A)
-i = SelectionSort()
+i = RecursiveMergeSort()
 print(i.sort(A))
