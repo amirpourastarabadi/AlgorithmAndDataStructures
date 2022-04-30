@@ -1,12 +1,13 @@
 <?php
 
-require_once "SortAlgorithms/php/vendor/RandomArray/RandomArray.php";
+require_once "./vendor/RandomArray/RandomArray.php";
+require_once "./Contracts/SortInterface/SortArray.php";
 
 $A = (new RandomArray())->make(4, 1, 10);
 
 # test bubbleSort
 //echo "\n-------------BUBBLE SORT-------------\n";
-// require_once "SortAlgorithms/php/BubbleSort/BubbleSort.php";
+// require_once "./BubbleSort/BubbleSort.php";
 // var_dump($A);
 // $A = (new BubbleSort())->sort($A);
 // var_dump($A);
@@ -14,15 +15,24 @@ $A = (new RandomArray())->make(4, 1, 10);
 
 # test insertionSort
 //echo "\n-------------INSERTION SORT-------------\n";
-//require_once "SortAlgorithms/php/InsertionSort/InsertionSort.php";
+//require_once "./InsertionSort/InsertionSort.php";
 //var_dump($A);
 //$A = (new InsertionSort())->sort($A);
 //var_dump($A);
 
 
 # test selectionSort
-echo "\n-------------SELECTION SORT-------------\n";
-require_once "SortAlgorithms/php/SelectionSort/SelectionSort.php";
-var_dump($A);
-$A = (new SelectionSort())->sort($A);
-var_dump($A);
+//echo "\n-------------SELECTION SORT-------------\n";
+//require_once "./SelectionSort/SelectionSort.php";
+//var_dump($A);
+//$A = (new SelectionSort())->sort($A);
+//var_dump($A);
+
+
+# test selectionSort
+echo "\n-------------Recursive Merge SORT-------------\n";
+require_once "./MergeSort/RecursiveMergeSort.php";
+$m = new RecursiveMergeSort();
+$m->printArray($A);
+$A = $m->sort($A);
+$m->printArray($A);

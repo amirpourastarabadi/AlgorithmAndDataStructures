@@ -1,7 +1,5 @@
 <?php
 
-require_once 'SortAlgorithms/php/Contracts/SortInterface/SortArray.php';
-
 class BubbleSort implements SortArray
 {
     public function sort(array $A):array

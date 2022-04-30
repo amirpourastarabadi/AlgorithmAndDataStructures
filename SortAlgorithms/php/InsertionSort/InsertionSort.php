@@ -1,7 +1,5 @@
 <?php
 
-require_once 'SortAlgorithms/php/Contracts/SortInterface/SortArray.php';
-
 class InsertionSort implements SortArray
 {
 
