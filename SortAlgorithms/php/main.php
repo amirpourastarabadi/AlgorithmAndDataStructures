@@ -3,7 +3,7 @@
 require_once "./vendor/RandomArray/RandomArray.php";
 require_once "./Contracts/SortInterface/SortArray.php";
 
-$A = (new RandomArray())->make(4, 1, 10);
+$A = (new RandomArray())->make(10, 1, 10);
 
 # test bubbleSort
 //echo "\n-------------BUBBLE SORT-------------\n";
