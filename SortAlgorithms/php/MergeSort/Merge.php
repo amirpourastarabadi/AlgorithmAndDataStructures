@@ -2,9 +2,10 @@
 
 trait Merge
 {
-    public function mergeTwoSortedArray(array $main, array $leftSide, array $rightSide): array
+    public function mergeTwoSortedArray(array $leftSide, array $rightSide): array
     {
         $i = $j = $k = 0;
+        $A = [];
 
         while ($i < count($leftSide) && $j < count($rightSide)) {
             if ($leftSide[$i] <= $rightSide[$j]) {

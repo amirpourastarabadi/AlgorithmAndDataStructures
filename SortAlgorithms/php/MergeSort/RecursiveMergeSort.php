@@ -13,7 +13,7 @@ class RecursiveMergeSort implements SortArray
             $leftSide = $this->sort($leftSide);
             $rightSide = $this->sort($rightSide);
 
-            return $this->mergeTwoSortedArray($A, $leftSide, $rightSide);
+            return $this->mergeTwoSortedArray($leftSide, $rightSide);
         }
 
         return $A;

@@ -1,7 +1,8 @@
 <?php
 
-require_once "./vendor/RandomArray/RandomArray.php";
 require_once "./Contracts/SortInterface/SortArray.php";
+require_once "./vendor/RandomArray/RandomArray.php";
+require_once "./MergeSort/BeautifulArrayPrint.php";
 require_once "./MergeSort/Merge.php";
 
 $A = (new RandomArray())->make(10, 1, 10);
@@ -30,10 +31,18 @@ $A = (new RandomArray())->make(10, 1, 10);
 //var_dump($A);
 
 
-# test selectionSort
-echo "\n-------------Recursive Merge SORT-------------\n";
-require_once "./MergeSort/RecursiveMergeSort.php";
-$m = new RecursiveMergeSort();
+# test recursiveMergeSort
+//echo "\n-------------Recursive Merge SORT-------------\n";
+//require_once "./MergeSort/RecursiveMergeSort.php";
+//$m = new RecursiveMergeSort();
+//$m->printArray($A);
+//$A = $m->sort($A);
+//$m->printArray($A);
+
+# test naturalMergeSort
+echo "\n-------------Natural Merge SORT-------------\n";
+require_once "./MergeSort/NaturalMergeSort.php";
+$m = new NaturalMergeSort();
 $m->printArray($A);
 $A = $m->sort($A);
 $m->printArray($A);
