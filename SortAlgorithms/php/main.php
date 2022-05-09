@@ -2,6 +2,7 @@
 
 require_once "./vendor/RandomArray/RandomArray.php";
 require_once "./Contracts/SortInterface/SortArray.php";
+require_once "./MergeSort/Merge.php";
 
 $A = (new RandomArray())->make(10, 1, 10);
 
