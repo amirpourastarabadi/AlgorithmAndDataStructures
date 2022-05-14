@@ -40,9 +40,17 @@ $A = (new RandomArray())->make(10, 1, 10);
 //$m->printArray($A);
 
 # test naturalMergeSort
-echo "\n-------------Natural Merge SORT-------------\n";
-require_once "./MergeSort/NaturalMergeSort.php";
-$m = new NaturalMergeSort();
-$m->printArray($A);
-$A = $m->sort($A);
-$m->printArray($A);
+//echo "\n-------------Natural Merge SORT-------------\n";
+//require_once "./MergeSort/NaturalMergeSort.php";
+//$m = new NaturalMergeSort();
+//$m->printArray($A);
+//$A = $m->sort($A);
+//$m->printArray($A);
+
+# test QuickSort
+//echo "\n-------------Quick SORT-------------\n";
+require_once "./MergeSort/QuickSort.php";
+$q = new QuickSort();
+$q->printArray($A);
+$A = $q->sort($A);
+$q->printArray($A);
