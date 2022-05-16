@@ -49,7 +49,7 @@ $A = (new RandomArray())->make(10, 1, 10);
 
 # test QuickSort
 //echo "\n-------------Quick SORT-------------\n";
-require_once "./MergeSort/QuickSort.php";
+require_once "./QuickSort/QuickSort.php";
 $q = new QuickSort();
 $q->printArray($A);
 $A = $q->sort($A);
