@@ -6,67 +6,74 @@ class QuickSort implements SortArray
 
     public function sort(array $A): array
     {
-        return $this->quick($A, 0, count($A) - 1);
-    }
-
-    protected function quick(array $A, int $from, int $to): array
-    {
-        if ($from < $to) {
-            $pivotIndex = $this->choosePivot($from, $to);
-            $A = $this->swap($A, $from, $pivotIndex);
-            [$A, $partitionIndex] = $this->partition($A, $pivotIndex, $from, $to);
-            echo "end of partidion by $partitionIndex\n";
-            sleep(1);
-            $A = $this->quick($A, $from, $partitionIndex - 1);
-            $A = $this->quick($A, $partitionIndex + 1, $to);
-        }
-
+        $this->quick($A, 0, count($A) - 1);
         return $A;
     }
 
-    protected function partition(array $A, int $pivotIndex, int $from, int $to): array
+    protected function quick(array &$A, int $from, int $to)
     {
-        $pivot = $A[$pivotIndex];
+        if ($from < $to) {
+            $pivotIndex = $this->choosePivot($from, $to);
+            $this->swap($A, $from, $pivotIndex);
+            
+            $partitionIndex = $this->partition($A, $from, $to);
+            
+            // echo "\nend of partidion by $partitionIndex\n";
+            // $this->printArray($A);
+            
+            // sleep(1);
+            
+            $this->quick($A, $from, $partitionIndex - 1);
+            $this->quick($A, $partitionIndex + 1, $to);
+        }
+    }
+
+    protected function partition(array &$A, int $from, int $to):int
+    {
+
+        $pivot = $A[$from];
+        $temp = $from;
+        
         $from = $from + 1;
+        
+        // echo "\n---------------------partition---------------------\n";
+        // echo "partition: from: $from($A[$from]), to: $to($A[$to]), pivot:$temp($pivot)\n";
+        // echo "on: ";
+        // $this->printArray($A);
+
         while (true) {
-            echo "\n---------------------partition---------------------\n";
+        
 
-            echo "partition: from: $from($A[$from]), to: $to($A[$to]), pivot:$pivotIndex($pivot)\n";
-
-            echo "from: ";
+            // echo "from: $from,";
             while ($from < $to && $A[$from] <= $pivot) {
                 $from++;
-                echo "$from, ";
+                // echo "$from, ";
             }
-            echo "\nto:";
+            // echo "\nto: $to,";
             while ($from < $to && $A[$to] >= $pivot) {
                 $to--;
-                echo "$to, ";
+                // echo "$to, ";
             }
 
             if ($from < $to) {
-                $A = $this->swap($A, $to, $from);
-                $this->printArray($A);
-                sleep(1);
+                $this->swap($A, $to, $from);
+                // $this->printArray($A);
+                // sleep(1);
                 continue;
             }
-            sleep(1);
+            // sleep(1);
             break;
         }
-        $this->swap($A, $to - 1, $pivotIndex);
+        $this->swap($A, $temp, $from-1);
 
-        return [$A, $to - 1];
+        return $from - 1 ;
     }
 
-    private function swap(array $A, $firstIndex, $secondIndex)
+    private function swap(array &$A, $firstIndex, $secondIndex)
     {
         $temp = $A[$firstIndex];
         $A[$firstIndex] = $A[$secondIndex];
         $A[$secondIndex] = $temp;
-        echo "\n---------------------swap---------------------\n";
-        echo "swap: $firstIndex<->$secondIndex\n";
-        $this->printArray($A);
-        return $A;
     }
 
     protected function choosePivot(int $fromIndex, int $toIndex): int
