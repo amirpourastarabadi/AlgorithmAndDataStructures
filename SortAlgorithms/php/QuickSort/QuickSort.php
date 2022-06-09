@@ -3,70 +3,73 @@
 class QuickSort implements SortArray
 {
     use BeautifulArrayPrint;
+    protected static $round = 0;
 
     public function sort(array $A): array
     {
-        $this->quick($A, 0, count($A) - 1);
+        return $this->quick($A, 0, count($A) - 1);
         return $A;
     }
 
-    protected function quick(array &$A, int $from, int $to)
+    protected function quick(array $A, int $from, int $to)
     {
         if ($from < $to) {
-            $pivotIndex = $this->choosePivot($from, $to);
-            $this->swap($A, $from, $pivotIndex);
-            
-            $partitionIndex = $this->partition($A, $from, $to);
-            
-            // echo "\nend of partidion by $partitionIndex\n";
-            // $this->printArray($A);
-            
-            // sleep(1);
-            
-            $this->quick($A, $from, $partitionIndex - 1);
-            $this->quick($A, $partitionIndex + 1, $to);
+            $pivot = $this->partition($A, $from, $to);
+            $this->quick($A, $from, $pivot - 1);
+            $this->quick($A, $pivot + 1, $to);
         }
+
+        return $A;
+
     }
 
-    protected function partition(array &$A, int $from, int $to):int
+    protected function partition(array &$A, int $from, int $to)
     {
-
-        $pivot = $A[$from];
-        $temp = $from;
+        static::$round ++;
+        $pivotIndex = $this->choosePivot($from, $to);
+        $pivot = $A[$pivotIndex];
         
-        $from = $from + 1;
-        
-        // echo "\n---------------------partition---------------------\n";
-        // echo "partition: from: $from($A[$from]), to: $to($A[$to]), pivot:$temp($pivot)\n";
-        // echo "on: ";
-        // $this->printArray($A);
+        $this->swap($A, $from, $pivotIndex);
+    
 
-        while (true) {
-        
-
-            // echo "from: $from,";
-            while ($from < $to && $A[$from] <= $pivot) {
-                $from++;
-                // echo "$from, ";
+        $i = $from + 1;
+        $j = $to;
+        echo "round: ". static::$round ."    --------------------------------------\n";
+        $this->printArray($A);
+        echo "pivot=$pivotIndex, from=$from, to=$to";
+        while(true)
+        {
+            echo "\ni: $i,";
+            while ($i < $j && $A[$i] <= $pivot && $i < count($A)-1) {
+                $i++;
+                echo "$i,";
             }
-            // echo "\nto: $to,";
-            while ($from < $to && $A[$to] >= $pivot) {
-                $to--;
-                // echo "$to, ";
+    
+            echo "\nj: $j,";
+            while ($i < $j && $A[$j] > $pivot && $j > 0) {
+                $j--;
+                echo "$j,";
             }
+    
 
-            if ($from < $to) {
-                $this->swap($A, $to, $from);
-                // $this->printArray($A);
-                // sleep(1);
+            if($i < $j)
+            {
+                echo "\nswap: $i, $j";
+                $this->swap($A, $i, $j);
+                $this->printArray($A);
                 continue;
             }
-            // sleep(1);
+            echo "\nend of while\n";
             break;
         }
-        $this->swap($A, $temp, $from-1);
 
-        return $from - 1 ;
+        $this->swap($A, $from, $i-1);
+        echo "\nswap: $from, " . ($i - 1);
+        $this->printArray($A);
+        echo "\nreturn $i";
+        echo "\n--------------------------------------\n";
+        return $i;
+        
     }
 
     private function swap(array &$A, $firstIndex, $secondIndex)

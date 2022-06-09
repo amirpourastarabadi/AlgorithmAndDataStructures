@@ -53,6 +53,5 @@ require_once "./QuickSort/QuickSort.php";
 $q = new QuickSort();
 echo "start with: ";
 $q->printArray($A);
-echo "\n";
 $A = $q->sort($A);
 $q->printArray($A);
