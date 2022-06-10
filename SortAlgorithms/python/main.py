@@ -31,10 +31,20 @@ import random
 
 
 # test SelectionSort
-from MergeSort.Recersive.RecursiveMergeSort import RecursiveMergeSort
-print("-------------RECURSIVE MERGE SORT-------------")
+# from MergeSort.Recersive.RecursiveMergeSort import RecursiveMergeSort
+# print("-------------RECURSIVE MERGE SORT-------------")
+# A = list(range(5, 1, -1))
+# random.shuffle(A)
+# print(A)
+# i = RecursiveMergeSort()
+# print(i.sort(A))
+
+
+# test quick sort
+from QuickSort.QuickSort import QuickSort
+print("-------------Quick SORT-------------")
 A = list(range(5, 1, -1))
 random.shuffle(A)
 print(A)
-i = RecursiveMergeSort()
+i = QuickSort()
 print(i.sort(A))

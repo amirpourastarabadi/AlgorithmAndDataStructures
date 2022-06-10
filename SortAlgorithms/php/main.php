@@ -48,10 +48,9 @@ $A = (new RandomArray())->make(10, 1, 10);
 //$m->printArray($A);
 
 # test QuickSort
-//echo "\n-------------Quick SORT-------------\n";
+echo "\n-------------Quick SORT-------------\n";
 require_once "./QuickSort/QuickSort.php";
 $q = new QuickSort();
-echo "start with: ";
 $q->printArray($A);
 $A = $q->sort($A);
 $q->printArray($A);
