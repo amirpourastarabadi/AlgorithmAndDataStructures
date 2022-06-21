@@ -74,7 +74,15 @@ class LinkedList:
 
 
     def get(self, index):
-        pass
+        if index <= 0 or index > self.length:
+            return None
+
+        target = self.head
+
+        for _ in range(index):
+            target = target.next
+        
+        return target.data
 
     def len(self):
         return self.length
@@ -89,14 +97,20 @@ assert linkeList.length == 0
 linkeList.append(Node('append'))
 assert linkeList.length == 1
 print('length =', linkeList.len())
+assert linkeList.get(1) == "append"
+print('get first =', linkeList.get(1))
 
 assert linkeList.length == 1
 linkeList.push(Node('push'))
 assert linkeList.length == 2
 print('length =', linkeList.len())
+assert linkeList.get(1) == "push"
+assert linkeList.get(2) == "append"
+print('get first =', linkeList.get(1))
 
 linkeList.pop()
 assert linkeList.length == 1
+assert linkeList.get(1) == "push"
 print('length =', linkeList.len())
 
 linkeList.shift()
@@ -105,6 +119,9 @@ print('length =', linkeList.len())
 
 linkeList.insert(1, Node('insert 1'))
 assert linkeList.length == 1
+assert linkeList.get(1) == "insert 1"
 print('length =', linkeList.len())
 linkeList.insert(1, Node('insert 2'))
+assert linkeList.get(1) == "insert 2"
+assert linkeList.get(2) == "insert 1"
 assert linkeList.length == 2
