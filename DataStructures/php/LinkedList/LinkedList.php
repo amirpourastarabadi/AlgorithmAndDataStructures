@@ -172,7 +172,7 @@ echo PHP_EOL;
 echo "list second Node 20 = " . $list->get(2);
 echo PHP_EOL;
 
-$list->append('append');
+$list->append(new Node('append'));
 echo "list lenght 3 = " . $list->length();
 echo PHP_EOL;
 echo "list first Node data 696 = " . $list->get(1);
@@ -221,4 +221,12 @@ echo PHP_EOL;
 echo "list fourth Node 'insert at 3' = " . $list->get(4);
 echo PHP_EOL;
 echo "list fifth Node append = " . $list->get(5);
+echo PHP_EOL;
 
+$list->pop();
+$list->pop();
+$list->pop();
+$list->pop();
+$list->pop();
+echo "list is empty true = " . $list->isEmpty();
+echo PHP_EOL;
