@@ -60,6 +60,12 @@ class LinkedList
 
     public function shift()
     {
+        if($this->length > 0)
+        {
+            $this->head->next = $this->head->next->next;
+            $this->head->next->prev = $this->head;
+            $this->lenght --;
+        }
     }
 
     public function insert(int $index, Node $node)
@@ -157,5 +163,23 @@ echo "list lenght 2 = " . $list->length();
 echo PHP_EOL;
 echo "list first Node data 696 = " . $list->get(1);
 echo PHP_EOL;
-echo "list third Node 20 = " . $list->get(2);
+echo "list second Node 20 = " . $list->get(2);
 echo PHP_EOL;
+
+$list->append('append');
+echo "list lenght 3 = " . $list->length();
+echo PHP_EOL;
+echo "list first Node data 696 = " . $list->get(1);
+echo PHP_EOL;
+echo "list second Node 20 = " . $list->get(2);
+echo PHP_EOL;
+echo "list third Node append = " . $list->get(3);
+echo PHP_EOL;
+
+$list->shift();
+echo "list lenght 2 = " . $list->length();
+echo PHP_EOL;
+echo "list first Node data 20 = " . $list->get(1);
+echo PHP_EOL;
+echo "list second Node append = " . $list->get(2);
+
