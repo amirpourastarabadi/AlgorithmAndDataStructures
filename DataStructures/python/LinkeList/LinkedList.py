@@ -1,4 +1,5 @@
 from contextlib import nullcontext
+from operator import length_hint
 
 
 class Node:
@@ -50,7 +51,27 @@ class LinkedList:
         self.length -= 1
 
     def insert(self, index, node):
-        pass
+
+        if index == 1:
+            return self.push(node)
+        
+        if index == self.length:
+            return self.append(node)
+
+        if 0 >= index > self.length:
+            return None
+
+        target = self.head
+        for _ in range(index):
+            target = target.next
+        
+        node.next = target
+        node.prev = target.prev
+        target.prev = node
+        node.prev.next = node
+
+        self.length += 1
+
 
     def get(self, index):
         pass
@@ -81,3 +102,9 @@ print('length =', linkeList.len())
 linkeList.shift()
 assert linkeList.length == 0
 print('length =', linkeList.len())
+
+linkeList.insert(1, Node('insert 1'))
+assert linkeList.length == 1
+print('length =', linkeList.len())
+linkeList.insert(1, Node('insert 2'))
+assert linkeList.length == 2
