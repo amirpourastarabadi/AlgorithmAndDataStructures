@@ -41,7 +41,13 @@ class LinkedList:
         self.length -= 1
 
     def shift(self):
-        pass
+        if self.length < 1:
+            return None
+
+        self.head.next.next.prev = self.head
+        self.head.next = self.head.next.next
+
+        self.length -= 1
 
     def insert(self, index, node):
         pass
@@ -70,4 +76,8 @@ print('length =', linkeList.len())
 
 linkeList.pop()
 assert linkeList.length == 1
+print('length =', linkeList.len())
+
+linkeList.shift()
+assert linkeList.length == 0
 print('length =', linkeList.len())
