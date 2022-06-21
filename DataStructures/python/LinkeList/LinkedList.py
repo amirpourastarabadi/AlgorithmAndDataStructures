@@ -90,6 +90,17 @@ class LinkedList:
     def isEmpty(self):
         return self.length == 0
     
+    def __str__(self) -> str:
+        
+        node = self.head.next
+        output = "["
+        for _ in range(self.length):
+            sep = '' if _ == self.length -1 else ", "
+            output += node.data + sep
+            node = node.next
+        output += ']'
+
+        return output
 
 linkeList = LinkedList()
 
@@ -99,6 +110,8 @@ assert linkeList.length == 1
 print('length =', linkeList.len())
 assert linkeList.get(1) == "append"
 print('get first =', linkeList.get(1))
+print(linkeList)
+print('*' * 100)
 
 assert linkeList.length == 1
 linkeList.push(Node('push'))
@@ -107,21 +120,29 @@ print('length =', linkeList.len())
 assert linkeList.get(1) == "push"
 assert linkeList.get(2) == "append"
 print('get first =', linkeList.get(1))
+print(linkeList)
+print('*' * 100)
 
 linkeList.pop()
 assert linkeList.length == 1
 assert linkeList.get(1) == "push"
 print('length =', linkeList.len())
+print(linkeList)
+print('*' * 100)
 
 linkeList.shift()
 assert linkeList.length == 0
 print('length =', linkeList.len())
+print(linkeList)
+print('*' * 100)
 
 linkeList.insert(1, Node('insert 1'))
 assert linkeList.length == 1
 assert linkeList.get(1) == "insert 1"
-print('length =', linkeList.len())
 linkeList.insert(1, Node('insert 2'))
+print('length =', linkeList.len())
 assert linkeList.get(1) == "insert 2"
 assert linkeList.get(2) == "insert 1"
 assert linkeList.length == 2
+print(linkeList)
+print('*' * 100)
