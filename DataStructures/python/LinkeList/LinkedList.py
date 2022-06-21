@@ -34,7 +34,11 @@ class LinkedList:
         self.length += 1
 
     def pop(self):
-        pass
+        if self.length < 1:
+            return None
+        self.tail.prev.prev.next = self.tail
+        self.tail.prev = self.tail.prev.prev
+        self.length -= 1
 
     def shift(self):
         pass
@@ -62,4 +66,8 @@ print('length =', linkeList.len())
 assert linkeList.length == 1
 linkeList.push(Node('push'))
 assert linkeList.length == 2
+print('length =', linkeList.len())
+
+linkeList.pop()
+assert linkeList.length == 1
 print('length =', linkeList.len())
