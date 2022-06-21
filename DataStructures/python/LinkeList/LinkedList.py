@@ -27,7 +27,11 @@ class LinkedList:
         self.length += 1
 
     def push(self, node):
-        pass
+        node.prev = self.head
+        node.next = self.head.next
+        self.head.next = node
+        node.next.prev = node
+        self.length += 1
 
     def pop(self):
         pass
@@ -49,7 +53,13 @@ class LinkedList:
     
 
 linkeList = LinkedList()
+
 assert linkeList.length == 0
 linkeList.append(Node('append'))
 assert linkeList.length == 1
+print('length =', linkeList.len())
+
+assert linkeList.length == 1
+linkeList.push(Node('push'))
+assert linkeList.length == 2
 print('length =', linkeList.len())
