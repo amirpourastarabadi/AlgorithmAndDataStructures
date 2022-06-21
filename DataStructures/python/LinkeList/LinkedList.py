@@ -8,7 +8,7 @@ class Node:
         self.next = None
         self.prev = None
 
-class LinkeList:
+class LinkedList:
 
     def __init__(self) -> None:
         self.head = Node()
@@ -20,7 +20,11 @@ class LinkeList:
         self.length = 0
 
     def append(self, node):
-        pass
+        node.next = self.tail
+        node.prev = self.tail.prev
+        self.tail.prev = node
+        node.prev.next = node
+        self.length += 1
 
     def push(self, node):
         pass
@@ -37,8 +41,15 @@ class LinkeList:
     def get(self, index):
         pass
 
-    def length(self):
-        pass
+    def len(self):
+        return self.length
 
     def isEmpty(self):
-        pass
+        return self.length == 0
+    
+
+linkeList = LinkedList()
+assert linkeList.length == 0
+linkeList.append(Node('append'))
+assert linkeList.length == 1
+print('length =', linkeList.len())
