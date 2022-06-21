@@ -70,6 +70,12 @@ class LinkedList
 
     public function insert(int $index, Node $node)
     {
+
+        $target = $this->getNode($index);
+        $node->next = $target;
+        $node->prev = $target->prev;
+        $target->prev = $node;
+        $node->prev->next = $node;
     }
 
     public function remove(int $index)
@@ -182,4 +188,37 @@ echo PHP_EOL;
 echo "list first Node data 20 = " . $list->get(1);
 echo PHP_EOL;
 echo "list second Node append = " . $list->get(2);
+
+$list->insert(1, new Node('insert at 1'));
+echo "list lenght 3 = " . $list->length();
+echo PHP_EOL;
+echo "list first Node data 'insert at 1' = " . $list->get(1);
+echo PHP_EOL;
+echo "list second Node 20 = " . $list->get(2);
+echo PHP_EOL;
+echo "list third Node append = " . $list->get(3);
+
+$list->insert(3, new Node('insert at 3'));
+echo "list lenght 4 = " . $list->length();
+echo PHP_EOL;
+echo "list first Node data 'insert at 1' = " . $list->get(1);
+echo PHP_EOL;
+echo "list second Node 20 = " . $list->get(2);
+echo PHP_EOL;
+echo "list third Node 'insert at 3' = " . $list->get(3);
+echo PHP_EOL;
+echo "list fourth Node append = " . $list->get(4);
+
+$list->insert(2, new Node('insert at 2'));
+echo "list lenght 5 = " . $list->length();
+echo PHP_EOL;
+echo "list first Node data 'insert at 1' = " . $list->get(1);
+echo PHP_EOL;
+echo "list second Node 'insert at 2' = " . $list->get(2);
+echo PHP_EOL;
+echo "list third Node 20 = " . $list->get(3);
+echo PHP_EOL;
+echo "list fourth Node 'insert at 3' = " . $list->get(4);
+echo PHP_EOL;
+echo "list fifth Node append = " . $list->get(5);
 
