@@ -14,7 +14,7 @@ class Stack
     {
         $this->top ++;
         
-        $this->stack[] = $value;
+        $this->stack[$this->top] = $value;
     }
 
     public function pop()
@@ -71,3 +71,15 @@ echo 'stack pop: ' . $stack->pop() . PHP_EOL;
 if($stack->isEmpty()){
     echo "stack is Empty Now" . PHP_EOL;
 }
+
+$stack->push(10);
+echo 'stack size: ' . $stack->size() . PHP_EOL;
+$stack->push(20);
+echo 'stack size: ' . $stack->size() . PHP_EOL;
+echo 'stack top: ' . $stack->top() . PHP_EOL;
+$top = $stack->pop();
+echo 'stack pop: ' . $top . PHP_EOL;
+echo 'stack top: ' . $stack->top() . PHP_EOL;
+echo 'stack size: ' . $stack->size() . PHP_EOL;
+echo 'stack pop: ' . $stack->pop() . PHP_EOL;
+echo 'stack size: ' . $stack->size() . PHP_EOL;
