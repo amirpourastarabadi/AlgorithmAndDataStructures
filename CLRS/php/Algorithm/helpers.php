@@ -24,7 +24,7 @@ function makeRandomArray(int $length, int $min = 0, int $max = 100)
     return $array;
 }
 
-function myEcho(string $outPut, string $color)
+function myEcho(string $outPut, string $color = '')
 {
     $color = strtolower($color);
     $colorCods = [ 
