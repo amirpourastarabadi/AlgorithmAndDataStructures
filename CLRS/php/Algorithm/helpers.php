@@ -23,3 +23,18 @@ function makeRandomArray(int $length, int $min = 0, int $max = 100)
 
     return $array;
 }
+
+function myEcho(string $outPut, string $color)
+{
+    $color = strtolower($color);
+    $colorCods = [ 
+        'green' => "\e[32m",
+        'red' => "\e[31m",
+        'yellow' => "\e[33m",
+        'blue' => "\e[34m",
+    ];
+
+    $colorCode = $colorCods[$color] ?? '';
+
+    echo $colorCode.$outPut."\n";
+}

@@ -46,8 +46,11 @@ for($i = 0; $i < $repeat; $i ++){
     $sum += $steps;
 }
 
-echo "Repeat = $repeat\nN = $n\nAvg = " . $sum / $n . "\nMax = $max\nMin = $min";
-echo PHP_EOL;
+myEcho("Repeat = $repeat", 'green');
+myEcho("N = $n", 'green');
+myEcho("Avg = " . $sum / $n , 'green');
+myEcho("Max = $max", 'red');
+myEcho("Min = $min", 'yellow');
 
 
 
